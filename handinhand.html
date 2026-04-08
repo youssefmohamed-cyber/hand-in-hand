@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مؤسسة ايدينا مع بعض للتأهيل</title>
+    <!-- خط Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d82;
+            --accent: #d4af37;
+            --donate-color: #ff6b6b;
+            --whatsapp-color: #25d366;
+            --dark: #2c3e50;
+            --text-gray: #555;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --radius: 20px;
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: var(--light-bg); 
+            margin: 0; padding: 0;
+            line-height: 1.8;
+            color: var(--dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
+
+        /* --- Header --- */
+        header { 
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; padding: 60px 20px; 
+            text-align: center; border-radius: 0 0 60px 60px; 
+            margin-bottom: 0; 
+            box-shadow: 0 10px 30px rgba(0,86,179,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        header h1 { margin: 0; font-size: 3rem; font-weight: 900; letter-spacing: -1px; }
+        
+        /* تأثير الكتابة */
+        header p { font-size: 1.3rem; opacity: 0.9; margin-top: 15px; min-height: 40px; }
+        .typing-text { color: var(--accent); font-weight: bold; }
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--white);
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* زر التبرع في الهيدر */
+        .donate-header-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background-color: var(--donate-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .donate-header-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        /* --- Section Styling Generic --- */
+        .section-padding { padding: 60px 20px; }
+        .section-title { 
+            text-align: center; margin: 10px 0 50px; 
+            color: var(--dark); font-size: 32px; font-weight: 800; 
+            position: relative; display: inline-block; width: 100%;
+        }
+        .section-title::after {
+            content: ''; display: block; width: 80px; height: 5px;
+            background: var(--accent); margin: 15px auto 0; border-radius: 10px;
+        }
+
+        /* --- 1. About Us Section --- */
+        .about-section {
+            background: var(--white);
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 50px 40px;
+        }
+        .reg-badge {
+            display: inline-block;
+            background: #eef5ff;
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            border: 1px solid #dbeaff;
+        }
+        .about-text p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .highlight-text { color: var(--primary); font-weight: 700; }
+
+        /* --- 2. Objectives Section --- */
+        .objectives-wrapper { margin-top: 80px; }
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .obj-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-top: 6px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .obj-card:hover { transform: translateY(-15px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .card-vision { border-color: #9b59b6; } 
+        .card-vision .icon-box { background: rgba(155, 89, 182, 0.1); color: #9b59b6; }
+        .card-goal { border-color: var(--primary); } 
+        .card-goal .icon-box { background: rgba(0, 86, 179, 0.1); color: var(--primary); }
+        .card-values { border-color: var(--accent); } 
+        .card-values .icon-box { background: rgba(212, 175, 55, 0.1); color: var(--accent); }
+        .icon-box {
+            width: 70px; height: 70px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .obj-title { font-size: 22px; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .obj-desc { color: var(--text-gray); font-size: 1rem; line-height: 1.8; text-align: justify; }
+        
+        .values-list { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
+        .value-item {
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            background: #fcfcfc; padding: 15px; border-radius: 12px; border: 1px solid #eee;
+            transition: 0.3s; cursor: pointer; position: relative;
+        }
+        .value-item:hover { background: #fff; border-color: var(--accent); transform: translateX(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .value-left { display: flex; align-items: center; gap: 12px; }
+        .value-icon { font-size: 1.4rem; }
+        .value-text { font-weight: 700; font-size: 1rem; color: #444; }
+        .value-arrow { font-size: 1.2rem; color: #ccc; transition: 0.3s; }
+        .value-item:hover .value-arrow { color: var(--accent); transform: translateX(-5px); }
+
+        /* --- 3. Image Slider Styles --- */
+        .gallery-section { background: var(--white); padding: 60px 20px; margin-top: 80px; border-radius: 30px; box-shadow: var(--shadow); text-align: center; }
+        .slider-wrapper {
+            position: relative; max-width: 1000px; margin: 0 auto; border-radius: 20px;
+            overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            aspect-ratio: 4 / 3; background-color: #f0f2f5;
+        }
+        .slides-container { display: flex; width: 100%; height: 100%; transition: transform 0.6s ease-in-out; }
+        .slide { min-width: 100%; height: 100%; position: relative; background-color: #fff; display: flex; justify-content: center; align-items: center; }
+        .slide img { object-fit: contain; width: 100%; height: 100%; display: block; }
+        .slide-caption {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white; padding: 60px 20px 20px; text-align: right; pointer-events: none;
+        }
+        .slide-caption h4 { margin: 0 0 5px 0; font-size: 1.4rem; color: var(--accent); text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .slide-caption p { margin: 0; font-size: 1rem; opacity: 0.9; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.6); border: 2px solid white;
+            color: var(--primary); padding: 12px 18px; cursor: pointer;
+            border-radius: 50%; z-index: 10; font-size: 20px; transition: 0.3s;
+            backdrop-filter: blur(3px); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+        }
+        .slider-btn:hover { background: var(--accent); border-color: var(--accent); color: white; }
+        .prev-btn { left: 20px; } .next-btn { right: 20px; }
+        .dots-container { text-align: center; padding: 25px 0 0 0; }
+        .dot { height: 12px; width: 12px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer; transition: background-color 0.3s, transform 0.3s; }
+        .dot.active, .dot:hover { background-color: var(--accent); transform: scale(1.2); }
+
+        /* --- NEW: Journey Map Styles --- */
+        .journey-wrapper {
+            margin-top: 80px;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .journey-nav {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            padding: 0 30px;
+        }
+        .progress-line {
+            position: absolute;
+            top: 25px;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+        .progress-active {
+            position: absolute;
+            top: 25px;
+            left: 50px;
+            height: 4px;
+            background: var(--accent);
+            z-index: 0;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .journey-step {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1;
+            transition: 0.3s;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+        .journey-step:hover {
+            border-color: var(--primary);
+            transform: scale(1.1);
+        }
+        .journey-step.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 0 5px rgba(212, 175, 55, 0.2);
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        .journey-content-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s;
+            border-right: 5px solid var(--primary);
+            text-align: right;
+        }
+        .journey-content-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 24px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* --- 5. Board Section --- */
+        .board-section { background: white; padding: 60px 20px; border-radius: 30px; box-shadow: var(--shadow); margin: 60px 0; border-top: 8px solid var(--accent); }
+        .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .member-card { background: #fff; padding: 30px; border-radius: 20px; text-align: center; border: 1px solid #eee; transition: 0.3s; cursor: pointer; }
+        .member-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15); border-color: var(--accent); }
+        .member-avatar { width: 100px; height: 100px; background: #f0f0f0; border-radius: 50%; margin: 0 auto 20px; overflow: hidden; border: 3px solid var(--accent); }
+        .member-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .member-name { font-weight: 800; color: var(--dark); font-size: 20px; margin-bottom: 5px; }
+        .member-role { color: var(--primary); font-weight: 700; font-size: 14px; margin-bottom: 10px; display: block; }
+
+        /* --- 6. Map Section --- */
+        .map-section {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 20px;
+            border: 2px solid #eee;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- Floating WhatsApp Button --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px;
+            background-color: var(--whatsapp-color);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
+        }
+        .whatsapp-float:hover {
+            background-color: #1ebc57;
+            transform: scale(1.1);
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- Footer --- */
+        footer { background: var(--dark); color: white; text-align: center; padding: 40px 20px; border-radius: 30px 30px 0 0; margin-top: 0; }
+        footer h3 { color: var(--accent); margin-bottom: 10px; }
+
+        /* --- Modal Styles --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; }
+        
+        .modal-content { 
+            background-color: white; border-radius: 25px; max-width: 550px; width: 100%; padding: 40px; position: relative; text-align: center; animation: zoomIn 0.3s ease;
+        }
+
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; color: #aaa; transition: 0.2s; line-height: 1;}
+        .close-btn:hover { color: #ff4757; transform: rotate(90deg); }
+
+        /* Donation Modal Specifics */
+        .donation-box {
+            background: #fff5f5;
+            border: 2px dashed var(--donate-color);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .bank-details { margin-bottom: 15px; }
+        .bank-name { font-weight: bold; color: var(--dark); font-size: 1.1rem; }
+        .account-number { font-family: monospace; font-size: 1.2rem; color: var(--primary); direction: ltr; text-align: right; margin-top: 5px; }
+        .copy-hint { font-size: 0.8rem; color: #777; margin-top: 2px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .donate-header-btn { position: relative; top: 0; left: 0; margin-top: 15px; display: inline-flex; }
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; left: 20px; font-size: 25px; }
+            .slider-wrapper { aspect-ratio: 1/1; }
+            /* Mobile Journey Map Adjustments */
+            .journey-nav { flex-direction: column; gap: 20px; align-items: center; }
+            .progress-line, .progress-active { width: 4px; height: 100%; top: 0; left: 25px; right: auto; }
+            .journey-step { width: 50px; height: 50px; margin-bottom: 10px; }
+            .journey-nav { padding: 0; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <button class="donate-header-btn" onclick="openDonateModal()">
+        <i class="fas fa-heart"></i> تبرع الآن
+    </button>
+
+    <h1>مؤسسة ايدينا مع بعض للتأهيل</h1>
+    <p>معاً نصنع الأمل ونعيد الحركة 
+        <span class="typing-text" id="typing-text"></span><span class="cursor">|</span>
+    </p>
+</header>
+
+<div class="container">
+    
+    <!-- قسم من نحن -->
+    <section class="about-section">
+        <div class="reg-badge">📄 مشهرة تحت رقم 6859 لسنة 2020</div>
+        <div class="about-text">
+            <p><strong>مؤسسة ايدينا مع بعض للتأهيل</strong> هى مؤسسة أهلية غير هادفة للربح تستقبل أموال الزكاة والصدقات.</p>
+            <p>سبب وجودنا هو <span class="highlight-text">الوصول إلى كل فاقدي الأطراف في مصر</span> وتوفير الدعم النفسي والمادي من خلال توفير أطراف صناعية صممت خصيصاً لكل شخص مصاب من خلال تكنولوجيا الطباعة ثلاثية الأبعاد.</p>
+            <p><strong>حلمنا</strong> هو أن يندمج كل فاقدي الأطراف في المجتمع وأن يتعايش بشكل طبيعي دون أن يشعر بأي تمييز.</p>
+            <p><strong>هدفنا الأساسي</strong> هو أن نكون مؤسسة محط أنظار كل فاقدي الأطراف كمثال عالمي بإعادة تأهيل المرضى وتوفير أطراف صناعية ذات جودة عالمية ليكونوا أشخاصاً منتجين قادرين على العمل وممارسة حياتهم الطبيعية.</p>
+        </div>
+    </section>
+
+    <!-- قسم أهدافنا -->
+    <section class="objectives-wrapper section-padding">
+        <h2 class="section-title">أهدافنا</h2>
+        <div class="objectives-grid">
+            <div class="obj-card card-vision">
+                <div class="icon-box">👁️</div>
+                <h3 class="obj-title">رؤيتنا</h3>
+                <p class="obj-desc">أن نكون رواداً في مساعدة فاقدي الأطراف بالمنطقة عبر أطراف مبتكرة ودعم نفسي واجتماعي لحياة أفضل.</p>
+            </div>
+            <div class="obj-card card-goal">
+                <div class="icon-box">🎯</div>
+                <h3 class="obj-title">هدفنا</h3>
+                <p class="obj-desc">نحن نعمل على تمكين فاقدي الأطراف من استعادة قدراتهم وتحسين جودة حياتهم من خلال تصنيع أطراف صناعية عالية الجودة بتقنيات الطباعة ثلاثية الأبعاد وتوفيرها مجاناً للمستحقين.</p>
+            </div>
+            <div class="obj-card card-values">
+                <div class="icon-box">💎</div>
+                <h3 class="obj-title">قيمنا <span style="font-size:14px; font-weight:400; color:#999; margin-right:auto">(اضغط للتفاصيل)</span></h3>
+                <div class="values-list">
+                    <div class="value-item" onclick="openValueModal('الإنسانية', 'وضع احتياجات المستفيدين فى قلب كل ما نقوم به .')">
+                        <div class="value-left"><span class="value-icon">❤️</span><span class="value-text">الإنسانية</span></div>
+                        <span class="value-arrow">⬅</span>
+                    </div>
+                    <div class="value-item" onclick="openValueModal('الابتكار', 'استخدام احدث التقنات لتوفير حلول افضل .')">
+                        <div class="value-left"><span class="value-icon">💡</span><span class="value-text">الابتكار</span></div>
+                        <span class="value-arrow">⬅</span>
+                    </div>
+                    <div class="value-item" onclick="openValueModal('الجودة', 'الاتزام بتقديم منتجات وخدمات عالية المستوى .')">
+                        <div class="value-left"><span class="value-icon">⭐</span><span class="value-text">الجودة</span></div>
+                        <span class="value-arrow">⬅</span>
+                    </div>
+                    <div class="value-item" onclick="openValueModal('المجانية', 'ضمان وصول الدعم لكل من يحتاجه دون مقابل .')">
+                        <div class="value-left"><span class="value-icon">🆓</span><span class="value-text">المجانية</span></div>
+                        <span class="value-arrow">⬅</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم معرض الصور -->
+    <section class="gallery-section">
+        <h2 class="section-title">لحظات أمل</h2>
+        <div class="slider-wrapper" id="sliderWrapper">
+            <div class="slides-container" id="slidesContainer"></div>
+            <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10095;</button>
+            <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10094;</button>
+        </div>
+        <div class="dots-container" id="dotsContainer"></div>
+    </section>
+
+    <!-- خريطة رحلة المستفيد (تم التعديل) -->
+    <section class="journey-wrapper">
+        <h2 style="text-align: center; margin-bottom: 30px; font-size: 32px; font-weight: 800; color: var(--dark); position: relative;">خريطة رحلة المستفيد</h2>
+        <div class="journey-nav">
+            <div class="progress-line"></div>
+            <div class="progress-active" id="progressLine"></div>
+            
+            <!-- الترتيب الجديد -->
+            <div class="journey-step active" onclick="showJourneyStep(0)"><i class="fas fa-headset"></i></div>
+            <div class="journey-step" onclick="showJourneyStep(1)"><i class="fas fa-search"></i></div>
+            <div class="journey-step" onclick="showJourneyStep(2)"><i class="fas fa-balance-scale"></i></div>
+            <div class="journey-step" onclick="showJourneyStep(3)"><i class="fas fa-door-open"></i></div>
+            <div class="journey-step" onclick="showJourneyStep(4)"><i class="fas fa-cogs"></i></div>
+            <div class="journey-step" onclick="showJourneyStep(5)"><i class="fas fa-brain"></i></div>
+        </div>
+        <div id="journey-content-area"></div>
+    </section>
+
+    <!-- مجلس الأمناء -->
+    <div class="board-section">
+        <h2 class="section-title" style="margin-top: 0; color: var(--accent);">مجلس الأمناء</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">اضغط على الاسم لعرض السيرة الذاتية</p>
+        <div class="board-grid">
+            
+            <div class="member-card" onclick="openMemberModal('م/ عمر صفي الدين', 'مؤسس ورئيس مجلس الأمناء', 'المدير التنفيذي للشركة المصرية الألمانية للصناعات الإنشائية - إيجيك (EGIC).')">
+                <div class="member-avatar"><img src="https://picsum.photos/seed/omar/200/200" alt="Avatar"></div>
+                <div class="member-name">م/ عمر صفي الدين</div>
+                <span class="member-role">رئيس مجلس الأمناء</span>
+            </div>
+
+            <div class="member-card" onclick="openMemberModal('م/ هشام حطب', 'نائب رئيس مجلس الأمناء', 'رئيس اللجنة الأولمبية المصرية سابقاً.\nرئيس إتحاد الفروسية المصري والإفريقي.')">
+                <div class="member-avatar"><img src="https://picsum.photos/seed/hisham/200/200" alt="Avatar"></div>
+                <div class="member-name">م/ هشام حطب</div>
+                <span class="member-role">نائب رئيس مجلس الأمناء</span>
+            </div>
+
+            <div class="member-card" onclick="openMemberModal('م/ عمرو أبو زيد', 'أمين الصندوق', 'عضو مجلس إدارة الشركة المصرية الألمانية للصناعات الإنشائية – إيجيك (EGIC).')">
+                <div class="member-avatar"><img src="https://picsum.photos/seed/amr/200/200" alt="Avatar"></div>
+                <div class="member-name">م/ عمرو أبو زيد</div>
+                <span class="member-role">أمين الصندوق</span>
+            </div>
+
+            <div class="member-card" onclick="openMemberModal('أ/ أيمن عباس', 'مؤسس وعضو مجلس أمناء', 'مالك شركة إم سكوير (M2).\nرئيس مجلس إدارة شركة أديس إنترناشونال القابضة.\nشريك إداري في مجموعة إنترو (INTRO).')">
+                <div class="member-avatar"><img src="https://picsum.photos/seed/ayman/200/200" alt="Avatar"></div>
+                <div class="member-name">أ/ أيمن عباس</div>
+                <span class="member-role">عضو مجلس أمناء</span>
+            </div>
+
+            <div class="member-card" onclick="openMemberModal('د/ سامح حطب', 'عضو مجلس أمناء', 'إستشاري جراحة العظام.\nخريج جراحة العظام في بريطانيا.')">
+                <div class="member-avatar"><img src="https://picsum.photos/seed/sameh/200/200" alt="Avatar"></div>
+                <div class="member-name">د/ سامح حطب</div>
+                <span class="member-role">عضو مجلس أمناء</span>
+            </div>
+
+            <div class="member-card" onclick="openMemberModal('م/ محمد حطب', 'المدير التنفيذي للمؤسسة', 'المسؤول عن الإشراف الكامل على العمليات اليومية للمؤسسة وضمان جودة الخدمات المقدمة.')">
+                <div class="member-avatar"><img src="https://picsum.photos/seed/mohamed/200/200" alt="Avatar"></div>
+                <div class="member-name">م/ محمد حطب</div>
+                <span class="member-role">المدير التنفيذي</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- خريطة جوجل -->
+    <div class="map-section">
+        <h2 class="section-title" style="margin-bottom: 20px;">موقعنا</h2>
+        <p>نستقبلكم بكل حب في مقرنا بالجيزة</p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55251.37709964659!2d31.1213244!3d30.0127354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sGiza%2C%20Giza%20Governorate%2C%20Egypt!5e0!3m2!1sen!2s!4v1698765432100!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Giza+Egypt" target="_blank" style="display:inline-block; margin-top:15px; color:var(--primary); font-weight:bold; text-decoration:none;">فتح المسارات في الخريطة <i class="fas fa-location-arrow"></i></a>
+    </div>
+
+</div>
+
+<footer>
+    <h3>مؤسسة ايدينا مع بعض للتأهيل</h3>
+    <p>📍 الجيزة، مصر | 📧 www.handinhand-ngo.com | 📞 17045</p>
+    <p style="margin-top: 20px; font-size: 12px;">جميع الحقوق محفوظة &copy; 2026</p>
+</footer>
+
+<!-- زر واتساب العائم -->
+<a href="https://wa.me/2019045" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Value Modal -->
+<div id="valueModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeValueModal()">&times;</span>
+        <h2 id="valueTitle" style="color:var(--accent)"></h2>
+        <p id="valueDesc"></p>
+    </div>
+</div>
+
+<!-- Member Modal -->
+<div id="memberModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeMemberModal()">&times;</span>
+        <h2 id="memberModalTitle"></h2>
+        <span id="memberModalRole" style="display:block; color:var(--accent); font-weight:bold; margin-bottom:20px;"></span>
+        <p id="memberModalDescription" style="text-align:right;"></p>
+    </div>
+</div>
+
+<!-- Donate Modal -->
+<div id="donateModal" class="modal">
+    <div class="modal-content" style="border-top: 5px solid var(--donate-color);">
+        <span class="close-btn" onclick="closeDonateModal()">&times;</span>
+        <div style="font-size: 50px; margin-bottom: 15px; color: var(--donate-color);"><i class="fas fa-hand-holding-heart"></i></div>
+        <h2 style="color: var(--dark);">ساهم في صنع الأمل</h2>
+        <p style="color:#666; margin-bottom: 25px;">تبرعك يساهم في صناعة طرف صناعي لشخص محتاج.</p>
+
+        <div class="donation-box">
+            <div class="bank-details">
+                <div class="bank-name">بنك قناة السويس 101</div>
+                <div class="account-number">EG02000000000000000000</div>
+                <div class="copy-hint">IBAN: حساب المؤسسة بالجنيه المصري</div>
+            </div>
+            <hr style="border:0; border-top:1px dashed #ccc; margin:15px 0;">
+            <div class="bank-details">
+                <div class="bank-name">فودافون كاش (Vodafone Cash)</div>
+                <div class="account-number">010xxxxxxxx</div>
+                <div class="copy-hint">باسم: مؤسسة ايدينا مع بعض</div>
+            </div>
+        </div>
+
+        <button onclick="closeDonateModal()" style="background: var(--donate-color); color: white; border: none; padding: 12px 40px; border-radius: 50px; cursor: pointer; font-weight: bold; font-family: 'Cairo';">شكراً لك</button>
+    </div>
+</div>
+
+<script>
+    // --- 1. Typing Effect Logic ---
+    const textToType = "(خليك طرف في الخير)";
+    const typingElement = document.getElementById('typing-text');
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeWriter() {
+        if (!isDeleting && charIndex <= textToType.length) {
+            typingElement.textContent = textToType.substring(0, charIndex);
+            charIndex++;
+            setTimeout(typeWriter, 150);
+        } else if (isDeleting && charIndex >= 0) {
+            typingElement.textContent = textToType.substring(0, charIndex);
+            charIndex--;
+            setTimeout(typeWriter, 100);
+        } else {
+            // Switch between typing and deleting
+            isDeleting = !isDeleting;
+            setTimeout(typeWriter, isDeleting ? 2000 : 500);
+        }
+    }
+    // Start typing on load
+    document.addEventListener('DOMContentLoaded', typeWriter);
+
+    // --- 2. Modals Logic ---
+    function openValueModal(title, desc) {
+        document.getElementById('valueTitle').innerText = title;
+        document.getElementById('valueDesc').innerText = desc;
+        document.getElementById('valueModal').style.display = 'flex';
+    }
+    function closeValueModal() { document.getElementById('valueModal').style.display = 'none'; }
+
+    function openMemberModal(name, role, desc) {
+        document.getElementById('memberModalTitle').innerText = name;
+        document.getElementById('memberModalRole').innerText = role;
+        document.getElementById('memberModalDescription').innerText = desc;
+        document.getElementById('memberModal').style.display = 'flex';
+    }
+    function closeMemberModal() { document.getElementById('memberModal').style.display = 'none'; }
+
+    // Donate Modal Logic
+    function openDonateModal() { document.getElementById('donateModal').style.display = 'flex'; }
+    function closeDonateModal() { document.getElementById('donateModal').style.display = 'none'; }
+
+    // Close modals on outside click
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            closeValueModal(); closeMemberModal(); closeDonateModal();
+        }
+    }
+
+    // --- 3. Journey Map Logic (جديد ومعدل) ---
+    const journeyData = [
+        { 
+            title: "إدارة الكول سينتر", 
+            desc: "يُعد قسم الكول سنتر هو نقطة التواصل الأولى مع الحالات، حيث يقوم الفريق باستقبال المكالمات الواردة عبر الخط الساخن، والتعامل معها باحترافية وسرعة استجابة. يتولى القسم جمع البيانات الأساسية للحالات، والرد على جميع الاستفسارات والأسئلة الخاصة بالخدمات المقدمة، مع توضيح معايير وشروط القبول داخل المؤسسة بشكل دقيق وواضح. كما يقوم فريق الكول سنتر بمتابعة الحالات التي تم قبولها وحجز المواعيد." 
+        },
+        { 
+            title: "إدارة الأبحاث الاجتماعية", 
+            desc: "يأتي دور قسم الأبحاث بعد استقبال بيانات الحالات من قسم الكول سنتر، حيث يتم تحويل الحالات التي تنطبق عليها معايير القبول المبدئية إلى باحث اجتماعي مختص. يقوم الباحث الاجتماعي بزيارة الحالة لإجراء بحث اجتماعي شامل، يهدف إلى تقييم الوضع الاجتماعي والمعيشي بشكل دقيق، بما يضمن توجيه الدعم لمستحقيه، واستلام المستندات المطلوبة." 
+        },
+        { 
+            title: "لجنة التقييم", 
+            desc: "يختص هذا القسم بمراجعة وتقييم الحالات بعد الانتهاء من البحث الاجتماعي واستيفاء جميع المستندات المطلوبة، بالإضافة إلى توثيق الحالة بالفيديو. حيث يتم عرض كل حالة على لجنة مختصة لدراسة الوضع الاجتماعي وتقييم مدى استحقاق الحالة للدعم، وفقًا للمعايير المعتمدة داخل المؤسسة، واتخاذ القرار النهائي بشأن القبول." 
+        },
+        { 
+            title: "قسم الاستقبال", 
+            desc: "يُعد قسم الاستقبال الواجهة الأولى للحالات داخل المؤسسة، حيث يتولى استقبال المستفيدين والترحيب بهم وتسهيل إجراءات دخولهم بشكل منظم. يقوم الفريق بتوجيه الحالات داخل المؤسسة إلى الأقسام المختلفة، مثل القسم النفسي والقسم الهندسي، وفقًا للمرحلة التي تمر بها كل حالة." 
+        },
+        { 
+            title: "القسم الهندسي", 
+            desc: "يُعد القسم الهندسي المسؤول الرئيسي عن تنفيذ وتصنيع الأطراف الصناعية، وذلك بعد استقبال الحالات التي تم حجز مواعيدها. يبدأ الفريق باستقبال الحالة داخل المؤسسة، ثم إجراء القياسات الدقيقة لموضع البتر، لضمان تصميم طرف صناعي مناسب ومريح للاستخدام، ويعتمد القسم على تقنيات الطباعة ثلاثية الأبعاد." 
+        },
+        { 
+            title: "القسم النفسي", 
+            desc: "يُقدم القسم النفسي برامج تأهيل نفسي متكاملة للمستفيدين وذويهم، بهدف مساعدتهم على التكيف مع تجربة البتر وما يصاحبها من تحديات نفسية واجتماعية. يعمل الفريق على دعم الحالات لتجاوز المشاعر السلبية، وتعزيز الثقة بالنفس، وتمكينهم من الاندماج في المجتمع بشكل إيجابي." 
+        }
+    ];
+
+    function initJourney() {
+        showJourneyStep(0);
+    }
+
+    function showJourneyStep(index) {
+        // Update UI Steps
+        const steps = document.querySelectorAll('.journey-step');
+        steps.forEach((el, idx) => {
+            if(idx === index) el.classList.add('active');
+            else el.classList.remove('active');
+        });
+
+        // Update Progress Line
+        const progress = (index / (journeyData.length - 1)) * 100;
+        document.getElementById('progressLine').style.width = `${progress}%`;
+
+        // Update Content
+        const data = journeyData[index];
+        const contentArea = document.getElementById('journey-content-area');
+        
+        contentArea.innerHTML = `
+            <div class="journey-content-card">
+                <h3><i class="fas ${getIconForIndex(index)}" style="color:var(--accent); margin-left:10px;"></i> ${data.title}</h3>
+                <p style="color:#555; line-height:2;">${data.desc}</p>
+            </div>
+        `;
+    }
+
+    function getIconForIndex(index) {
+        const icons = ["fa-headset", "fa-search", "fa-balance-scale", "fa-door-open", "fa-cogs", "fa-brain"];
+        return icons[index] || "fa-circle";
+    }
+
+    // Initialize Journey on load
+    window.addEventListener('load', initJourney);
+
+    // --- 4. Slider Logic ---
+    const imagesData = [
+        { src: "505435800_1042286681386218_704719022736097523_n.jpg", title: "قوة الإرادة", desc: "الأشخاص الذين يعانون من صعوبات في النطق يتحدثون بملء فمهم." },
+        { src: "534799989_1088193716795514_6828317734592960690_n.jpg", title: "شراكة حقيقية", desc: "العمل معاً من خلال hand in hand." },
+        { src: "547648588_1110800544534831_3453371078610153338_n.jpg", title: "تمكين المرأة", desc: "دعم وتأهيل السيدات لاستعادة حياتهم الطبيعية." },
+        { src: "561885054_1129466942668191_7785892896883765349_n.jpg", title: "التكنولوجيا الحديثة", desc: "استخدام المعدات ثلاثية الأبعاد." },
+        { src: "571263500_1145922941022591_8314174744839709186_n.jpg", title: "الاستثمار في الإنسان", desc: "المستثمر النهائي هو الإنسان ومستقبله." },
+        { src: "581232076_1158527746428777_2634561029360988144_n.jpg", title: "المواطنة الصالحة", desc: "دمج ذوي الاحتياجات الخاصة." },
+        { src: "583006867_1160740219540863_1696219009137037613_n.jpg", title: "يداً بيد", desc: "التفاعل المباشر والدعم النفسي." },
+        { src: "590727379_1170775871870631_1385566182695956625_n%20(1).jpg", title: "رعاية المسنين", desc: "اهتمام خاص وتقديم الدعم لكبار السن." },
+        { src: "656461661_18097504430061582_6334422509252538861_n.jpg", title: "أسرة سعيدة", desc: "توفير حياة كريمة للأطفال." },
+        { src: "658817014_18098368421061582_8089016405318423666_n.jpg", title: "الحياة النشطة", desc: "العودة لممارسة الرياضة والنشاط اليومي." }
+    ];
+
+    let currentSlide = 0;
+    let slideInterval;
+    const slidesContainer = document.getElementById('slidesContainer');
+    const dotsContainer = document.getElementById('dotsContainer');
+
+    function initSlider() {
+        imagesData.forEach((img, index) => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = 'slide';
+            const image = document.createElement('img');
+            image.src = img.src; image.alt = img.title;
+            const caption = document.createElement('div');
+            caption.className = 'slide-caption';
+            caption.innerHTML = `<h4>${img.title}</h4><p>${img.desc}</p>`;
+            slideDiv.appendChild(image); slideDiv.appendChild(caption);
+            slidesContainer.appendChild(slideDiv);
+
+            const dot = document.createElement('span');
+            dot.className = 'dot';
+            if (index === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(index);
+            dotsContainer.appendChild(dot);
+        });
+        startAutoSlide();
+        document.getElementById('sliderWrapper').addEventListener('mouseenter', stopAutoSlide);
+        document.getElementById('sliderWrapper').addEventListener('mouseleave', startAutoSlide);
+    }
+
+    function updateSlider() {
+        slidesContainer.style.transform = `translateX(${currentSlide * 100}%)`;
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentSlide].classList.add('active');
+    }
+
+    function moveSlide(step) {
+        currentSlide += step;
+        if (currentSlide >= imagesData.length) currentSlide = 0;
+        else if (currentSlide < 0) currentSlide = imagesData.length - 1;
+        updateSlider();
+    }
+
+    function goToSlide(index) { currentSlide = index; updateSlider(); resetTimer(); }
+
+    function startAutoSlide() {
+        stopAutoSlide();
+        slideInterval = setInterval(() => { moveSlide(1); }, 4000);
+    }
+    function stopAutoSlide() { clearInterval(slideInterval); }
+    function resetTimer() { stopAutoSlide(); startAutoSlide(); }
+
+    window.addEventListener('load', initSlider);
+</script>
+
+</body>
+</html>
